@@ -163,6 +163,8 @@ const startHand = async () => {
   handID = generateRandomID();
   dataCollected.handsPlayed++;
   gameState = 2; // waiting for next hand
+  flipCard();
+  io.emit("next_hand", Date.now() + 5000);
   setTimeout(startHand, 5000);
 };
 
@@ -249,6 +251,7 @@ const startGame = () => {
   gameState = 0; // waiting to start
   previousCard = "";
   round = 0;
+  io.emit("start_game", Date.now() + 5000);
   setTimeout(startHand, 5000);
 };
 
