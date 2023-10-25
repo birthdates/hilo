@@ -282,7 +282,6 @@ const startGame = () => {
   setTimeout(startHand, 25000);
 };
 
-createTables();
 startGame();
 
 server.listen(3001, () => console.log(chalk.green("Server is running on port 3001")));

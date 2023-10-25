@@ -19,6 +19,8 @@
 .DS_Store
 *.pem
 
+socket/data.json
+
 # debug
 npm-debug.log*
 yarn-debug.log*
