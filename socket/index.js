@@ -8,6 +8,7 @@ import express from "express";
 const app = express();
 const server = createServer(app);
 const STARTING_BALANCE = 100;
+const HOUSE_EDGE = 0.1; // 10% house edge
 const io = new Server(server, {
   cors: {
     origin: "http://69.194.47.37:3000",
@@ -128,6 +129,7 @@ io.on("connection", (socket) => {
     if (previousCard && gameState !== 0) {
       bet.betType = type;
     } else {
+      dataCollected.totalBets += amount;
       updateBalance(socket.token, balance - amount);
       bet.bet += amount;
     }
@@ -148,6 +150,7 @@ const finishRound = async () => {
   for (const [token, bet] of bets) {
     const balance = await fetchBalance(token);
     const winnings = bet.bet * bet.multiplier;
+    dataCollected.totalProfit += winnings - bet.bet;
     updateBalance(token, balance + winnings);
   }
   previousCard = "";
@@ -253,7 +256,7 @@ const checkWinnings = (card, suit) => {
       return;
     }
 
-    multiplier -= 0.1; // 10% house edge
+    multiplier -= HOUSE_EDGE;
 
     if (multiplier > 1) {
       if (betInfo[key].multiplier <= 1) {
