@@ -276,13 +276,13 @@ export default function Home() {
         )}
       </div>
       {!detectMob() && (
-        <div className="fixed w-full h-full flex items-center left-[10rem]">
+        <div className="fixed flex items-center left-[10rem]">
           <Image
             alt="QR Code"
             width={250}
             height={250}
             src={
-              "https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=http://69.194.47.37:3000/"
+              "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=http://69.194.47.37:3000/"
             }
           ></Image>
         </div>

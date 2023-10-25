@@ -15,7 +15,6 @@ const io = new Server(server, {
 });
 const TOKEN_TO_SOCKET = {};
 import fs from "fs";
-import { ST } from "next/dist/shared/lib/utils.js";
 
 let gameState = 0; // 0 = waiting to start, 1 = waiting for next hand
 
