@@ -20,7 +20,7 @@ type Bet = {
 };
 
 const BET_AMOUNTS = [5, 10, 50];
-const BET_TYPES = ["HIGH", "LOW", "RED", "BLACK", "SAME"];
+const BET_TYPES = ["HIGH", "LOW", "RED", "BLACK", "SAME", "CASH"];
 
 export default function Home() {
   const [isConnected, setIsConnected] = useState(false);
@@ -31,7 +31,7 @@ export default function Home() {
   const [state, setState] = useState<number>(0);
   const [betAmount, setBetAmount] = useState<number>(0);
   const [betType, setBetType] = useState<number>(0);
-  const [lost, setLost] = useState<boolean>(false);
+  const [lost, setLost] = useState<number>(-1);
 
   function detectMob() {
     return (
@@ -98,10 +98,18 @@ export default function Home() {
     });
 
     socket.on("state", (state: number) => setState(state));
+    socket.once("cards", (cards: string[]) => {
+      if (!cards) return;
+      if (detectMob() && cards.length > 1) {
+        setCards(cards.slice(0, 1));
+        return;
+      }
+      setCards(cards);
+    });
 
-    socket.on("bet", (bet: Bet | null) => {
+    socket.on("bet", (bet: Bet | null, lost?: boolean) => {
       if (bet == null) {
-        setLost(true);
+        setLost(lost ? 0 : 1);
       }
       setBet(bet);
     });
@@ -109,7 +117,7 @@ export default function Home() {
     socket.on("start_game", (time: number) => {
       setCards([]);
       setBet(null);
-      setLost(false);
+      setLost(-1);
       setWaiting(time);
     });
 
@@ -124,7 +132,7 @@ export default function Home() {
 
     socket.once("waiting", (wait: number) => setWaiting(wait));
 
-    socket.on("balance_update", (bal: number) => setBalance(bal));
+    socket.on("balance_update", (bal: number) => setBalance(bal ?? 0));
 
     socket.on("connect", onConnect);
     socket.on("disconnect", onDisconnect);
@@ -138,6 +146,8 @@ export default function Home() {
       socket.off("disconnect", onDisconnect);
       socket.off("state");
       socket.off("card");
+      socket.off("cards");
+      socket.off("waiting");
       socket.off("start_game");
       socket.off("next_hand");
       socket.off("bet");
@@ -182,8 +192,10 @@ export default function Home() {
           <span className="text-gray-200 w-full text-center mt-4">
             {state === 0
               ? "Place a bet to play in this round."
-              : lost
-              ? "You have lost this round."
+              : lost >= 0
+              ? lost == 0
+                ? "You have lost this round."
+                : "You have cashed out this round."
               : "You are not playing this round."}
           </span>
         )}

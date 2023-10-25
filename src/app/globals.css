@@ -26,6 +26,7 @@ body {
   color: rgb(var(--foreground-rgb));
   background: url("/bg.jpg");
   background-repeat: no-repeat;
+  min-height: -webkit-fill-available;
   background-size: cover;
   overflow: hidden;
 }

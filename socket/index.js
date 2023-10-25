@@ -1,7 +1,6 @@
 import chalk from "chalk";
 import { createServer } from "http";
 import { Server } from "socket.io";
-import { createTables } from "./data.js";
 import { getRedisClient } from "./redis.js";
 import express from "express";
 
@@ -16,6 +15,7 @@ const io = new Server(server, {
 });
 const TOKEN_TO_SOCKET = {};
 import fs from "fs";
+import { ST } from "next/dist/shared/lib/utils.js";
 
 let gameState = 0; // 0 = waiting to start, 1 = waiting for next hand
 
@@ -23,7 +23,7 @@ let gameState = 0; // 0 = waiting to start, 1 = waiting for next hand
  * token -> {
  *  bet: number,
  *  multiplier: number,
- *  betType: number (0 = low, 1 = high, 2 = red, 3 = black, 4 = same card)
+ *  betType: number (0 = low, 1 = high, 2 = red, 3 = black, 4 = same card, 5 = cash out)
  * }
  */
 let betInfo = {};
@@ -39,6 +39,9 @@ const generateRandomID = () => {
 };
 
 const updateBalance = async (token, balance) => {
+  if (balance !== undefined && isNaN(balance)) {
+    throw new Error("Balance must be a number.");
+  }
   const client = await getRedisClient();
   const fetch = !balance;
 
@@ -59,16 +62,13 @@ io.use(async (socket, next) => {
   let token = socket.handshake.auth.token;
   const client = await getRedisClient();
 
-  if (!token) {
+  if (!token || !(await client.exists(token))) {
     // Generate random token and store it in Redis (token -> balance)
     token = Math.random().toString(36).substr(2);
     client.set(token, STARTING_BALANCE);
     socket.newConnection = true;
   }
 
-  if (!client.exists(token)) {
-    return next(new Error("Invalid token"));
-  }
   // set token
   socket.token = token;
   TOKEN_TO_SOCKET[token] = socket;
@@ -85,6 +85,7 @@ io.on("connection", (socket) => {
   // Send balance to client on connection
   updateBalance(socket.token);
 
+  socket.emit("cards", shownCards);
   socket.emit("waiting", waitingTime);
   socket.emit("state", gameState);
 
@@ -102,7 +103,7 @@ io.on("connection", (socket) => {
       (isNaN(amount) && isNaN(type)) ||
       amount <= 0 ||
       type < 0 ||
-      type > 4 ||
+      type > 5 ||
       waitingTime < Date.now()
     ) {
       return;
@@ -144,14 +145,22 @@ const dataCollected = JSON.parse(fs.readFileSync("./data.json", "utf-8"));
 let round = 0;
 let handID = "";
 let previousCard = "";
+let shownCards = [];
+
+const finishBet = async (token, bet) => {
+  const balance = await fetchBalance(token);
+  const winnings = bet.bet * bet.multiplier;
+  if (isNaN(winnings)) {
+    return;
+  }
+  dataCollected.totalProfit += winnings - bet.bet;
+  updateBalance(token, balance + winnings);
+};
 
 const finishRound = async () => {
   const bets = Object.entries(betInfo);
   for (const [token, bet] of bets) {
-    const balance = await fetchBalance(token);
-    const winnings = bet.bet * bet.multiplier;
-    dataCollected.totalProfit += winnings - bet.bet;
-    updateBalance(token, balance + winnings);
+    finishBet(token, bet);
   }
   previousCard = "";
   betInfo = {};
@@ -213,6 +222,7 @@ const checkWinnings = (card, suit) => {
   for (const [key, bet] of bets) {
     let chanceUsed = 0;
     let failed = false;
+    let cash = false;
 
     if (bet.betType === 0) {
       // High
@@ -232,6 +242,9 @@ const checkWinnings = (card, suit) => {
       if (lastCardIndex !== cardIndex || lastCardSuit !== suit) {
         failed = true;
       }
+    } else if (bet.betType == 5) {
+      finishBet(key, bet);
+      cash = true;
     } else {
       if (bet.betType === 2 && !isRed(suit)) {
         failed = true;
@@ -245,14 +258,15 @@ const checkWinnings = (card, suit) => {
       hand: handID,
       betType: bet.betType,
       chance: chanceUsed * 100,
+      cash,
       multiplier,
     });
 
     const socket = TOKEN_TO_SOCKET[key];
 
-    if (failed) {
+    if (failed || cash) {
       delete betInfo[key];
-      if (socket) socket.emit("bet", null);
+      if (socket) socket.emit("bet", null, failed);
       return;
     }
 
@@ -274,12 +288,14 @@ const flipCard = () => {
   io.emit("card", card);
   if (previousCard) checkWinnings(randomCard, randomSuit);
   previousCard = card;
+  shownCards = [card, ...shownCards];
 };
 
 const startGame = () => {
   updateState(0);
   previousCard = "";
   round = 0;
+  shownCards = [];
   waitingTime = Date.now() + 25000;
   io.emit("start_game", waitingTime);
   setTimeout(startHand, 25000);
