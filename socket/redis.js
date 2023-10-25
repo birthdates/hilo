@@ -10,6 +10,8 @@ client.on("error", (error) => {
 });
 
 export const getRedisClient = async () => {
-  await client.connect();
+  if (!client.isOpen) {
+    await client.connect();
+  }
   return client;
 };

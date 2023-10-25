@@ -7,15 +7,16 @@ import express from "express";
 
 const app = express();
 const server = createServer(app);
-const STARTING_BALANCE = 50;
+const STARTING_BALANCE = 5000;
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "http://69.194.47.37:3000",
   },
 });
 const TOKEN_TO_SOCKET = {};
+import fs from "fs";
 
-let gameState = 0; // 0 = waiting to start, 1 = waiting for bets, 2 = waiting for next hand
+let gameState = 0; // 0 = waiting to start, 1 = waiting for next hand
 
 /**
  * token -> {
@@ -24,12 +25,11 @@ let gameState = 0; // 0 = waiting to start, 1 = waiting for bets, 2 = waiting fo
  *  betType: number (0 = low, 1 = high, 2 = red, 3 = black, 4 = same card)
  * }
  */
-const betInfo = {};
+let betInfo = {};
 
 const fetchBalance = async (token) => {
   const client = await getRedisClient();
   const balance = parseInt(await client.get(token));
-  await client.disconnect();
   return balance;
 };
 
@@ -46,11 +46,10 @@ const updateBalance = async (token, balance) => {
   }
 
   const socket = TOKEN_TO_SOCKET[token];
-  socket.emit("balance_update", balance);
+  if (socket) socket.emit("balance_update", balance);
 
   if (!fetch) {
     await client.set(token, balance);
-    await client.disconnect();
   }
 };
 
@@ -69,8 +68,6 @@ io.use(async (socket, next) => {
   if (!client.exists(token)) {
     return next(new Error("Invalid token"));
   }
-  await client.disconnect();
-
   // set token
   socket.token = token;
   TOKEN_TO_SOCKET[token] = socket;
@@ -81,62 +78,66 @@ io.use(async (socket, next) => {
 io.on("connection", (socket) => {
   // Send generated token to client on connection
   if (socket.newConnection) {
-    socket.emit("token", socket.token);
+    socket.emit("new_token", socket.token);
   }
 
   // Send balance to client on connection
   updateBalance(socket.token);
+
+  socket.emit("waiting", waitingTime);
+  socket.emit("state", gameState);
+
+  const bet = betInfo[socket.token];
+  if (bet) {
+    socket.emit("bet", bet);
+  }
 
   socket.on("disconnect", () => {
     delete TOKEN_TO_SOCKET[socket.token];
   });
 
   socket.on("bet", async (amount, type) => {
-    if (gameState > 1 || isNaN(amount) || isNaN(type) || type < 0 || type > 4) {
+    if (
+      (isNaN(amount) && isNaN(type)) ||
+      amount <= 0 ||
+      type < 0 ||
+      type > 4 ||
+      waitingTime < Date.now()
+    ) {
       return;
     }
 
     let bet = betInfo[socket.token];
+    const balance = await fetchBalance(socket.token);
     if (!bet) {
       if (gameState !== 0) {
         socket.emit("error", "You can only bet at the start of a new hand.");
         return;
       }
-      const balance = await fetchBalance(socket.token);
       if (amount > balance) {
         socket.emit("error", "Insufficient funds.");
         return;
       }
       bet = {
-        bet: amount,
+        bet: 0,
         multiplier: 1.0,
-        betType: type,
+        betType: type || 0,
       };
     }
 
-    updateBalance(socket.token, balance - amount);
-    bet.betType = type;
+    if (previousCard && gameState !== 0) {
+      bet.betType = type;
+    } else {
+      updateBalance(socket.token, balance - amount);
+      bet.bet += amount;
+    }
+
+    betInfo[socket.token] = bet;
+    socket.emit("bet", bet);
   });
 });
 
-const dataCollected = {
-  handsPlayed: 0,
-  hands: {
-    id: {
-      card: "Qs", // Queen of spades
-      lowChance: 1,
-      highChance: 95,
-    },
-  },
-  bets: [
-    {
-      hand: "id",
-      betType: 0,
-      chance: 0.0,
-      multiplier: 1.0, // 0 if loss
-    },
-  ],
-};
+const dataCollected = JSON.parse(fs.readFileSync("./data.json", "utf-8"));
 
 let round = 0;
 let handID = "";
@@ -153,23 +154,34 @@ const finishRound = async () => {
   betInfo = {};
 };
 
+const updateState = (state) => {
+  gameState = state;
+  io.emit("state", state);
+};
+
 const startHand = async () => {
+  handID = generateRandomID();
+  dataCollected.handsPlayed++;
+  if (dataCollected.handsPlayed > 0) {
+    // save
+    fs.writeFileSync("./data.json", JSON.stringify(dataCollected, null, 2));
+  }
+  updateState(1); // waiting for bets
+  flipCard();
   round++;
   if (round > 5) {
     await finishRound();
     startGame();
     return;
   }
-  handID = generateRandomID();
-  dataCollected.handsPlayed++;
-  gameState = 2; // waiting for next hand
-  flipCard();
-  io.emit("next_hand", Date.now() + 5000);
-  setTimeout(startHand, 5000);
+  waitingTime = Date.now() + 15000;
+  io.emit("next_hand", Date.now() + 15000);
+  setTimeout(startHand, 15000);
 };
 
-const cards = ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "J", "Q", "K", "A"];
+const cards = ["2", "3", "4", "5", "6", "7", "8", "9", "!", "J", "Q", "K", "A"];
 const suits = ["s", "h", "d", "c"];
+let waitingTime = 0;
 
 const isRed = (suit) => {
   return suit === "h" || suit === "d";
@@ -180,15 +192,15 @@ const isBlack = (suit) => {
 };
 
 const checkWinnings = (card, suit) => {
-  const bets = Object.entires(betInfo);
+  const bets = Object.entries(betInfo);
   const cardIndex = cards.indexOf(card);
-  const lowChance = index / cards.length;
-  const highChance = (cards.length - index) / cards.length;
-  const sameChance = 1 / cards.length;
 
   const lastCardType = previousCard[0];
   const lastCardIndex = cards.indexOf(lastCardType);
   const lastCardSuit = previousCard[1];
+  const lowChance = (lastCardIndex + 1) / cards.length;
+  const highChance = (cards.length - lastCardIndex) / cards.length;
+  const sameChance = 1 / cards.length;
 
   dataCollected.hands[handID] = {
     card: card + suit,
@@ -197,44 +209,58 @@ const checkWinnings = (card, suit) => {
   };
   for (const [key, bet] of bets) {
     let chanceUsed = 0;
+    let failed = false;
 
     if (bet.betType === 0) {
-      chanceUsed = lowChance;
-      if (lastCardIndex > cardIndex) {
-        chanceUsed = 0;
+      // High
+      chanceUsed = highChance;
+      if (lastCardIndex >= cardIndex) {
+        failed = true;
       }
     } else if (bet.betType === 1) {
-      chanceUsed = highChance;
-      if (lastCardIndex < cardIndex) {
-        chanceUsed = 0;
+      // Low
+      chanceUsed = lowChance;
+      if (lastCardIndex <= cardIndex) {
+        failed = true;
       }
     } else if (bet.betType === 4) {
+      // Same
       chanceUsed = sameChance;
       if (lastCardIndex !== cardIndex || lastCardSuit !== suit) {
-        chanceUsed = 0;
+        failed = true;
       }
     } else {
-      chanceUsed = 0.5; // red/black
       if (bet.betType === 2 && !isRed(suit)) {
-        chanceUsed = 0;
+        failed = true;
       } else if (bet.betType === 3 && !isBlack(suit)) {
-        chanceUsed = 0;
-      }
+        failed = true;
+      } else chanceUsed = 0.5; // red/black
     }
-    const multiplier = chanceUsed <= 0 ? 0 : 1 / chanceUsed;
+    let multiplier = 1 / chanceUsed;
 
     dataCollected.bets.push({
       hand: handID,
       betType: bet.betType,
-      chance,
+      chance: chanceUsed * 100,
       multiplier,
     });
 
-    if (multiplier <= 0) {
+    const socket = TOKEN_TO_SOCKET[key];
+
+    if (failed) {
       delete betInfo[key];
+      if (socket) socket.emit("bet", null);
       return;
     }
-    betInfo[key].multiplier += multiplier;
+
+    multiplier -= 0.1; // 10% house edge
+
+    if (multiplier > 1) {
+      if (betInfo[key].multiplier <= 1) {
+        betInfo[key].multiplier = multiplier;
+      } else betInfo[key].multiplier += multiplier;
+    }
+    if (socket) socket.emit("bet", betInfo[key]);
   }
 };
 
@@ -243,18 +269,20 @@ const flipCard = () => {
   const randomSuit = suits[Math.floor(Math.random() * suits.length)];
   const card = randomCard + randomSuit;
   io.emit("card", card);
-  if (!previousCard) checkWinnings(randomCard, randomSuit);
+  if (previousCard) checkWinnings(randomCard, randomSuit);
   previousCard = card;
 };
 
 const startGame = () => {
-  gameState = 0; // waiting to start
+  updateState(0);
   previousCard = "";
   round = 0;
-  io.emit("start_game", Date.now() + 5000);
-  setTimeout(startHand, 5000);
+  waitingTime = Date.now() + 25000;
+  io.emit("start_game", waitingTime);
+  setTimeout(startHand, 25000);
 };
 
 createTables();
+startGame();
 
-server.listen(3001, () => chalk.green("Server is running on port 3001"));
+server.listen(3001, () => console.log(chalk.green("Server is running on port 3001")));
