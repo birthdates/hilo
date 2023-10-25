@@ -7,7 +7,7 @@ import express from "express";
 
 const app = express();
 const server = createServer(app);
-const STARTING_BALANCE = 5000;
+const STARTING_BALANCE = 100;
 const io = new Server(server, {
   cors: {
     origin: "http://69.194.47.37:3000",

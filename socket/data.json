@@ -1,5 +1,5 @@
 {
-  "handsPlayed": 52,
+  "handsPlayed": 56,
   "hands": {
     "fftuwh9bern": {
       "card": "!d",
@@ -170,6 +170,26 @@
       "card": "8c",
       "lowChance": 69.23076923076923,
       "highChance": 38.46153846153847
+    },
+    "70s0zvf4w2j": {
+      "card": "9h",
+      "lowChance": 53.84615384615385,
+      "highChance": 53.84615384615385
+    },
+    "gjxnexj0uh": {
+      "card": "2d",
+      "lowChance": 61.53846153846154,
+      "highChance": 46.15384615384615
+    },
+    "385nbvckkmk": {
+      "card": "9s",
+      "lowChance": 7.6923076923076925,
+      "highChance": 100
+    },
+    "f50in6miou4": {
+      "card": "Jd",
+      "lowChance": 61.53846153846154,
+      "highChance": 46.15384615384615
     }
   },
   "bets": [
