@@ -247,7 +247,9 @@ export default function Home() {
         {(bet || state === 0) && (
           <>
             {state === 0 && (
-              <span className="text-center text-lg mt-2">Betting ${betAmount}</span>
+              <span className="text-center text-lg mt-2">
+                Betting <span className="font-bold">${betAmount}</span>
+              </span>
             )}
             {state === 0 && (
               <div className="flex flex-row mt-3 justify-center">
