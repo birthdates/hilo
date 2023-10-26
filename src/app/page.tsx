@@ -142,17 +142,7 @@ export default function Home() {
     }, 100);
 
     return () => {
-      socket.off("connect", onConnect);
-      socket.off("disconnect", onDisconnect);
-      socket.off("state");
-      socket.off("card");
-      socket.off("cards");
-      socket.off("waiting");
-      socket.off("start_game");
-      socket.off("next_hand");
-      socket.off("bet");
-      socket.off("error");
-      socket.off("balance_update");
+      socket.removeAllListeners();
       clearInterval(interval);
     };
   }, []);
