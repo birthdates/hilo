@@ -16,6 +16,7 @@ const socket = io(URL!, {
 type Bet = {
   bet: number;
   multiplier: number;
+  profit: number;
   type: number;
 };
 
@@ -119,6 +120,7 @@ export default function Home() {
       setBet(null);
       setLost(-1);
       setWaiting(time);
+      setBetType(0);
     });
 
     socket.on("next_hand", (time: number) => {
@@ -150,7 +152,7 @@ export default function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 select-none overflow-hidden">
       <span className="top-10 flex flex-col text-center absolute text-2xl font-bold">
-        <span>Hi-Lo Haven</span>
+        <span>High-Low Haven</span>
         <span className="uppercase">Ace High</span>
       </span>
       {waiting > Date.now() && (
@@ -172,9 +174,7 @@ export default function Home() {
               <span className="text-lg font-bold">
                 Multiplier: {bet.multiplier.toFixed(2)}x
               </span>
-              <span className="text-lg font-bold">
-                Profit: ${(bet.bet * bet.multiplier - bet.bet).toFixed(2)}
-              </span>
+              <span className="text-lg font-bold">Profit: ${bet.profit.toFixed(2)}</span>
             </div>
           </div>
         )}

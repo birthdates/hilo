@@ -7,7 +7,7 @@ import express from "express";
 const app = express();
 const server = createServer(app);
 const STARTING_BALANCE = 100;
-const HOUSE_EDGE = 0.1; // 10% house edge
+const HOUSE_EDGE = 0.05; // 5% house edge
 const io = new Server(server, {
   cors: {
     origin: "http://69.194.47.37:3000",
@@ -22,6 +22,7 @@ let gameState = 0; // 0 = waiting to start, 1 = waiting for next hand
  * token -> {
  *  bet: number,
  *  multiplier: number,
+ *  profit: number,
  *  betType: number (0 = low, 1 = high, 2 = red, 3 = black, 4 = same card, 5 = cash out)
  * }
  */
@@ -42,7 +43,7 @@ const updateBalance = async (token, balance) => {
     throw new Error("Balance must be a number.");
   }
   const client = await getRedisClient();
-  const fetch = !balance;
+  const fetch = balance === undefined;
 
   if (fetch) {
     balance = await fetchBalance(token);
@@ -75,14 +76,14 @@ io.use(async (socket, next) => {
   next();
 });
 
-io.on("connection", (socket) => {
+io.on("connection", async (socket) => {
   // Send generated token to client on connection
   if (socket.newConnection) {
     socket.emit("new_token", socket.token);
   }
 
   // Send balance to client on connection
-  updateBalance(socket.token);
+  await updateBalance(socket.token);
 
   socket.emit("cards", shownCards);
   socket.emit("waiting", waitingTime);
@@ -122,6 +123,7 @@ io.on("connection", (socket) => {
       bet = {
         bet: 0,
         multiplier: 1.0,
+        profit: 0.0,
         betType: type || 0,
       };
     }
@@ -129,8 +131,12 @@ io.on("connection", (socket) => {
     if (previousCard && gameState !== 0) {
       bet.betType = type;
     } else {
+      if (amount > balance) {
+        socket.emit("error", "Insufficient funds.");
+        return;
+      }
       dataCollected.totalBets += amount;
-      updateBalance(socket.token, balance - amount);
+      await updateBalance(socket.token, balance - amount);
       bet.bet += amount;
     }
 
@@ -148,12 +154,12 @@ let shownCards = [];
 
 const finishBet = async (token, bet) => {
   const balance = await fetchBalance(token);
-  const winnings = bet.bet * bet.multiplier;
+  const winnings = bet.profit;
   if (isNaN(winnings)) {
     return;
   }
-  dataCollected.totalProfit += winnings - bet.bet;
-  updateBalance(token, balance + winnings);
+  dataCollected.totalProfit += winnings;
+  await updateBalance(token, balance + winnings);
 };
 
 const finishRound = async () => {
@@ -209,7 +215,7 @@ const checkWinnings = (card, suit) => {
   const lastCardType = previousCard[0];
   const lastCardIndex = cards.indexOf(lastCardType);
   const lastCardSuit = previousCard[1];
-  const lowChance = (lastCardIndex + 1) / cards.length;
+  const lowChance = lastCardIndex / cards.length;
   const highChance = (cards.length - lastCardIndex) / cards.length;
   const sameChance = 1 / cards.length;
 
@@ -264,17 +270,20 @@ const checkWinnings = (card, suit) => {
     const socket = TOKEN_TO_SOCKET[key];
 
     if (failed || cash) {
+      console.log("Loss:", previousCard, card, suit, betInfo[key]);
       delete betInfo[key];
       if (socket) socket.emit("bet", null, failed);
       return;
     }
 
-    multiplier -= HOUSE_EDGE;
+    if (multiplier - HOUSE_EDGE > 1) {
+      multiplier -= HOUSE_EDGE;
+    }
+    console.log("Win", previousCard, card, suit, betInfo[key], multiplier);
 
     if (multiplier > 1) {
-      if (betInfo[key].multiplier <= 1) {
-        betInfo[key].multiplier = multiplier;
-      } else betInfo[key].multiplier += multiplier;
+      betInfo[key].multiplier = multiplier;
+      betInfo[key].profit += bet.bet * multiplier - bet.bet;
     }
     if (socket) socket.emit("bet", betInfo[key]);
   }

@@ -1,7 +1,1285 @@
 {
-  "handsPlayed": 0,
-  "totalBets": 0,
-  "totalProfit": 0,
-  "hands": {},
-  "bets": []
+  "handsPlayed": 184,
+  "totalBets": 19075,
+  "totalProfit": 4752.593434343434,
+  "hands": {
+    "u5dz38we849": {
+      "card": "9c",
+      "lowChance": 30.76923076923077,
+      "highChance": 76.92307692307693
+    },
+    "xm9geoyjxv": {
+      "card": "4d",
+      "lowChance": 61.53846153846154,
+      "highChance": 46.15384615384615
+    },
+    "aascxvjezsd": {
+      "card": "3s",
+      "lowChance": 23.076923076923077,
+      "highChance": 84.61538461538461
+    },
+    "1x9ui8vm3hx": {
+      "card": "9c",
+      "lowChance": 15.384615384615385,
+      "highChance": 92.3076923076923
+    },
+    "w30imnuihq": {
+      "card": "Qd",
+      "lowChance": 61.53846153846154,
+      "highChance": 46.15384615384615
+    },
+    "2s5d1tn113c": {
+      "card": "9d",
+      "lowChance": 38.46153846153847,
+      "highChance": 69.23076923076923
+    },
+    "egpl0j9wsq5": {
+      "card": "!s",
+      "lowChance": 61.53846153846154,
+      "highChance": 46.15384615384615
+    },
+    "5ven5b1vxbj": {
+      "card": "8d",
+      "lowChance": 69.23076923076923,
+      "highChance": 38.46153846153847
+    },
+    "y5nn8h8jri": {
+      "card": "Js",
+      "lowChance": 53.84615384615385,
+      "highChance": 53.84615384615385
+    },
+    "638heo3kxau": {
+      "card": "3c",
+      "lowChance": 76.92307692307693,
+      "highChance": 30.76923076923077
+    },
+    "y58ykd127ha": {
+      "card": "2h",
+      "lowChance": 92.3076923076923,
+      "highChance": 15.384615384615385
+    },
+    "506shanbj1m": {
+      "card": "5h",
+      "lowChance": 7.6923076923076925,
+      "highChance": 100
+    },
+    "y2sfxoi1k9": {
+      "card": "7d",
+      "lowChance": 30.76923076923077,
+      "highChance": 76.92307692307693
+    },
+    "h8d2576w79o": {
+      "card": "3d",
+      "lowChance": 46.15384615384615,
+      "highChance": 61.53846153846154
+    },
+    "yremgwjdiw": {
+      "card": "5h",
+      "lowChance": 15.384615384615385,
+      "highChance": 92.3076923076923
+    },
+    "j7nn410q67": {
+      "card": "3h",
+      "lowChance": 84.61538461538461,
+      "highChance": 23.076923076923077
+    },
+    "k8pu7ixiujl": {
+      "card": "5s",
+      "lowChance": 15.384615384615385,
+      "highChance": 92.3076923076923
+    },
+    "rbnq56epv3o": {
+      "card": "Kh",
+      "lowChance": 30.76923076923077,
+      "highChance": 76.92307692307693
+    },
+    "kivzgnlgyn": {
+      "card": "9c",
+      "lowChance": 92.3076923076923,
+      "highChance": 15.384615384615385
+    },
+    "caxb1knqydp": {
+      "card": "8c",
+      "lowChance": 61.53846153846154,
+      "highChance": 46.15384615384615
+    },
+    "k0d4ssvi7e8": {
+      "card": "5c",
+      "lowChance": 100,
+      "highChance": 7.6923076923076925
+    },
+    "px5uggoh4l": {
+      "card": "9d",
+      "lowChance": 30.76923076923077,
+      "highChance": 76.92307692307693
+    },
+    "vmjt167gog": {
+      "card": "6d",
+      "lowChance": 61.53846153846154,
+      "highChance": 46.15384615384615
+    },
+    "nq0m7k536qf": {
+      "card": "8h",
+      "lowChance": 38.46153846153847,
+      "highChance": 69.23076923076923
+    },
+    "hipmtxt83o7": {
+      "card": "8c",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "perpiidnkl": {
+      "card": "Qs",
+      "lowChance": 46.15384615384615,
+      "highChance": 53.84615384615385
+    },
+    "h3hp6s9o3so": {
+      "card": "7s",
+      "lowChance": 76.92307692307693,
+      "highChance": 23.076923076923077
+    },
+    "dify9a7d0p": {
+      "card": "Ah",
+      "lowChance": 38.46153846153847,
+      "highChance": 61.53846153846154
+    },
+    "l4kbcuzzevp": {
+      "card": "!s",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "pd145gwbne7": {
+      "card": "3d",
+      "lowChance": 0,
+      "highChance": 100
+    },
+    "hzo72mqrb8v": {
+      "card": "3s",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "vmoz13923ks": {
+      "card": "5h",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "4mjw389czqd": {
+      "card": "Ad",
+      "lowChance": 23.076923076923077,
+      "highChance": 76.92307692307693
+    },
+    "o4p7zxluch": {
+      "card": "8d",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "vbyvjpi4ht": {
+      "card": "3h",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "zejhc4tb9pa": {
+      "card": "3d",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "iftza8kp3z": {
+      "card": "Qd",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "2qlo04vmg4u": {
+      "card": "Qh",
+      "lowChance": 76.92307692307693,
+      "highChance": 23.076923076923077
+    },
+    "th4cbl11o7b": {
+      "card": "4d",
+      "lowChance": 76.92307692307693,
+      "highChance": 23.076923076923077
+    },
+    "a6olf5es838": {
+      "card": "8c",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "2c43u97dm44": {
+      "card": "4h",
+      "lowChance": 46.15384615384615,
+      "highChance": 53.84615384615385
+    },
+    "snb075pdpjc": {
+      "card": "Jh",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "ep7vpef1yin": {
+      "card": "Jd",
+      "lowChance": 69.23076923076923,
+      "highChance": 30.76923076923077
+    },
+    "sq5rmgv4dc": {
+      "card": "4d",
+      "lowChance": 69.23076923076923,
+      "highChance": 30.76923076923077
+    },
+    "epql2gfeju": {
+      "card": "Kh",
+      "lowChance": 38.46153846153847,
+      "highChance": 61.53846153846154
+    },
+    "o1jdevi609n": {
+      "card": "Kd",
+      "lowChance": 84.61538461538461,
+      "highChance": 15.384615384615385
+    },
+    "zvctj76i0dn": {
+      "card": "7d",
+      "lowChance": 84.61538461538461,
+      "highChance": 15.384615384615385
+    },
+    "ezwxj7a001n": {
+      "card": "9c",
+      "lowChance": 38.46153846153847,
+      "highChance": 61.53846153846154
+    },
+    "38tbtazo5cw": {
+      "card": "!h",
+      "lowChance": 53.84615384615385,
+      "highChance": 46.15384615384615
+    },
+    "1pm3w500uqq": {
+      "card": "4c",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "3bclnkv7u3a": {
+      "card": "3s",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "4yonfjem1us": {
+      "card": "Ks",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "3cey692py3u": {
+      "card": "8d",
+      "lowChance": 84.61538461538461,
+      "highChance": 15.384615384615385
+    },
+    "avpeh4xsn3b": {
+      "card": "!h",
+      "lowChance": 46.15384615384615,
+      "highChance": 53.84615384615385
+    },
+    "wi6t71dyn8c": {
+      "card": "9h",
+      "lowChance": 23.076923076923077,
+      "highChance": 76.92307692307693
+    },
+    "gsc1pvboir7": {
+      "card": "3s",
+      "lowChance": 53.84615384615385,
+      "highChance": 46.15384615384615
+    },
+    "2lbmujxshtr": {
+      "card": "!h",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "a6ukjxhvgcp": {
+      "card": "Ad",
+      "lowChance": 61.53846153846154,
+      "highChance": 38.46153846153847
+    },
+    "08e6joiyjylh": {
+      "card": "6h",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "byubf5ugba": {
+      "card": "Ad",
+      "lowChance": 69.23076923076923,
+      "highChance": 30.76923076923077
+    },
+    "xuj7owr8g3": {
+      "card": "2c",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "uxhltpbwlr": {
+      "card": "Js",
+      "lowChance": 0,
+      "highChance": 100
+    },
+    "2a3rzy2e69u": {
+      "card": "Ks",
+      "lowChance": 69.23076923076923,
+      "highChance": 30.76923076923077
+    },
+    "rlx9x1xhn7": {
+      "card": "Qs",
+      "lowChance": 84.61538461538461,
+      "highChance": 15.384615384615385
+    },
+    "xmc05g92kh": {
+      "card": "Ac",
+      "lowChance": 0,
+      "highChance": 100
+    },
+    "th1tiy1ts7k": {
+      "card": "4s",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "wcrc563aw6e": {
+      "card": "2d",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "yesz1on72d": {
+      "card": "!d",
+      "lowChance": 0,
+      "highChance": 100
+    },
+    "iymzz46bep": {
+      "card": "Ks",
+      "lowChance": 61.53846153846154,
+      "highChance": 38.46153846153847
+    },
+    "n61qa9n2ub9": {
+      "card": "7d",
+      "lowChance": 23.076923076923077,
+      "highChance": 76.92307692307693
+    },
+    "wisrs1b4x1j": {
+      "card": "8d",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "imtf2leccwr": {
+      "card": "6s",
+      "lowChance": 46.15384615384615,
+      "highChance": 53.84615384615385
+    },
+    "wl882qk91xo": {
+      "card": "4s",
+      "lowChance": 30.76923076923077,
+      "highChance": 69.23076923076923
+    },
+    "n6sdzas2pp": {
+      "card": "Kd",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "v8zmc5j5wt": {
+      "card": "4s",
+      "lowChance": 84.61538461538461,
+      "highChance": 15.384615384615385
+    },
+    "xkwnwlo88zb": {
+      "card": "Jd",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "7vma957veru": {
+      "card": "2c",
+      "lowChance": 69.23076923076923,
+      "highChance": 30.76923076923077
+    },
+    "fguj3aqry3": {
+      "card": "6d",
+      "lowChance": 0,
+      "highChance": 100
+    },
+    "bmkpra2kwh": {
+      "card": "4c",
+      "lowChance": 30.76923076923077,
+      "highChance": 69.23076923076923
+    },
+    "rbrtnfnjy4f": {
+      "card": "8h",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "jjfy8pdn4d": {
+      "card": "Ac",
+      "lowChance": 53.84615384615385,
+      "highChance": 46.15384615384615
+    },
+    "jxsbwti9hf": {
+      "card": "7h",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "yb141uru1k": {
+      "card": "6d",
+      "lowChance": 38.46153846153847,
+      "highChance": 61.53846153846154
+    },
+    "gc9llbyqz2l": {
+      "card": "5d",
+      "lowChance": 30.76923076923077,
+      "highChance": 69.23076923076923
+    },
+    "z50ylugto2l": {
+      "card": "Jc",
+      "lowChance": 23.076923076923077,
+      "highChance": 76.92307692307693
+    },
+    "aglcov84uug": {
+      "card": "6d",
+      "lowChance": 61.53846153846154,
+      "highChance": 38.46153846153847
+    },
+    "dq5af2jhh2": {
+      "card": "6s",
+      "lowChance": 30.76923076923077,
+      "highChance": 69.23076923076923
+    },
+    "g1gzsb18qxl": {
+      "card": "!d",
+      "lowChance": 30.76923076923077,
+      "highChance": 69.23076923076923
+    },
+    "lfqblwl8bb": {
+      "card": "Qc",
+      "lowChance": 61.53846153846154,
+      "highChance": 38.46153846153847
+    },
+    "o5zyf12bc7": {
+      "card": "7c",
+      "lowChance": 76.92307692307693,
+      "highChance": 23.076923076923077
+    },
+    "tgyiirxwobc": {
+      "card": "Js",
+      "lowChance": 46.15384615384615,
+      "highChance": 53.84615384615385
+    },
+    "ath7jubahh4": {
+      "card": "2c",
+      "lowChance": 38.46153846153847,
+      "highChance": 61.53846153846154
+    },
+    "t6y18tphzt": {
+      "card": "4d",
+      "lowChance": 0,
+      "highChance": 100
+    },
+    "rhk0j4gout": {
+      "card": "8c",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "tbcrxqpp25j": {
+      "card": "Kh",
+      "lowChance": 46.15384615384615,
+      "highChance": 53.84615384615385
+    },
+    "rqbkk3fjbrm": {
+      "card": "7d",
+      "lowChance": 84.61538461538461,
+      "highChance": 15.384615384615385
+    },
+    "rt5pe1cnlc": {
+      "card": "Kc",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "eyevnxhtjt9": {
+      "card": "4d",
+      "lowChance": 84.61538461538461,
+      "highChance": 15.384615384615385
+    },
+    "bzctc04bkqr": {
+      "card": "4s",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "8f9iqic7c2": {
+      "card": "5s",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "0wm19hu9zo6e": {
+      "card": "!c",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "gplz7ubif1l": {
+      "card": "5h",
+      "lowChance": 61.53846153846154,
+      "highChance": 38.46153846153847
+    },
+    "ss50jwyht1l": {
+      "card": "Jd",
+      "lowChance": 23.076923076923077,
+      "highChance": 76.92307692307693
+    },
+    "nt75zn5tgdg": {
+      "card": "4s",
+      "lowChance": 69.23076923076923,
+      "highChance": 30.76923076923077
+    },
+    "io6uwouy1ff": {
+      "card": "7d",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "erlmn91r97f": {
+      "card": "Jd",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "jtk8s38r5n": {
+      "card": "4s",
+      "lowChance": 69.23076923076923,
+      "highChance": 30.76923076923077
+    },
+    "gch51kr9lup": {
+      "card": "8s",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "7i1edg5m1q5": {
+      "card": "8h",
+      "lowChance": 46.15384615384615,
+      "highChance": 53.84615384615385
+    },
+    "1a132ww9jxp": {
+      "card": "4s",
+      "lowChance": 46.15384615384615,
+      "highChance": 53.84615384615385
+    },
+    "kajhtm6l0m": {
+      "card": "Kc",
+      "lowChance": 61.53846153846154,
+      "highChance": 38.46153846153847
+    },
+    "4xvntkc2ns": {
+      "card": "9s",
+      "lowChance": 84.61538461538461,
+      "highChance": 15.384615384615385
+    },
+    "a589u2txbwd": {
+      "card": "9s",
+      "lowChance": 53.84615384615385,
+      "highChance": 46.15384615384615
+    },
+    "a80r3s4aii": {
+      "card": "Ac",
+      "lowChance": 53.84615384615385,
+      "highChance": 46.15384615384615
+    },
+    "rnvpoq56b5": {
+      "card": "4s",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "9u98mvfztpp": {
+      "card": "3c",
+      "lowChance": 76.92307692307693,
+      "highChance": 23.076923076923077
+    },
+    "3z7vc8jz2jn": {
+      "card": "Ah",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "egagik13vm": {
+      "card": "3s",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "xo7h2rucd": {
+      "card": "7h",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "5qvi71du3ws": {
+      "card": "Kc",
+      "lowChance": 38.46153846153847,
+      "highChance": 61.53846153846154
+    },
+    "a84huve1eb": {
+      "card": "Ad",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "doc09hhtnyw": {
+      "card": "Jd",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "dfvfxomuzew": {
+      "card": "7s",
+      "lowChance": 69.23076923076923,
+      "highChance": 30.76923076923077
+    },
+    "66kua5ddt2i": {
+      "card": "3c",
+      "lowChance": 38.46153846153847,
+      "highChance": 61.53846153846154
+    },
+    "ty0qp3lxfk8": {
+      "card": "4c",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "y5jzidgiay": {
+      "card": "2h",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    },
+    "bdq9ctomlk5": {
+      "card": "Jc",
+      "lowChance": 0,
+      "highChance": 100
+    },
+    "cyppurlpxf": {
+      "card": "6s",
+      "lowChance": 69.23076923076923,
+      "highChance": 30.76923076923077
+    },
+    "gykhac7w5r": {
+      "card": "Jc",
+      "lowChance": 46.15384615384615,
+      "highChance": 53.84615384615385
+    },
+    "x2o4dj9j0b": {
+      "card": "3s",
+      "lowChance": 69.23076923076923,
+      "highChance": 30.76923076923077
+    },
+    "xq9vp40xocl": {
+      "card": "2d",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "run3huret7": {
+      "card": "5s",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "m1lsrhb68l": {
+      "card": "As",
+      "lowChance": 23.076923076923077,
+      "highChance": 76.92307692307693
+    },
+    "inv0d4b9kpf": {
+      "card": "Ah",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "98b4wrtxou": {
+      "card": "Kh",
+      "lowChance": 92.3076923076923,
+      "highChance": 7.6923076923076925
+    },
+    "6a7akk64vqv": {
+      "card": "8c",
+      "lowChance": 84.61538461538461,
+      "highChance": 15.384615384615385
+    },
+    "2yddritmubo": {
+      "card": "3d",
+      "lowChance": 69.23076923076923,
+      "highChance": 30.76923076923077
+    },
+    "6wbu46hv80p": {
+      "card": "4d",
+      "lowChance": 7.6923076923076925,
+      "highChance": 92.3076923076923
+    },
+    "rpqlpi1yfg": {
+      "card": "4h",
+      "lowChance": 15.384615384615385,
+      "highChance": 84.61538461538461
+    }
+  },
+  "bets": [
+    {
+      "hand": "2s5d1tn113c",
+      "betType": 0,
+      "chance": 69.23076923076923,
+      "cash": false,
+      "multiplier": 1.4444444444444444
+    },
+    {
+      "hand": "2s5d1tn113c",
+      "betType": 0,
+      "chance": 69.23076923076923,
+      "cash": false,
+      "multiplier": 1.4444444444444444
+    },
+    {
+      "hand": "2s5d1tn113c",
+      "betType": 1,
+      "chance": 38.46153846153847,
+      "cash": false,
+      "multiplier": 2.5999999999999996
+    },
+    {
+      "hand": "egpl0j9wsq5",
+      "betType": 5,
+      "chance": 0,
+      "cash": true,
+      "multiplier": null
+    },
+    {
+      "hand": "5ven5b1vxbj",
+      "betType": 2,
+      "chance": 50,
+      "cash": false,
+      "multiplier": 2
+    },
+    {
+      "hand": "5ven5b1vxbj",
+      "betType": 3,
+      "chance": 0,
+      "cash": false,
+      "multiplier": null
+    },
+    {
+      "hand": "y5nn8h8jri",
+      "betType": 3,
+      "chance": 50,
+      "cash": false,
+      "multiplier": 2
+    },
+    {
+      "hand": "638heo3kxau",
+      "betType": 5,
+      "chance": 0,
+      "cash": true,
+      "multiplier": null
+    },
+    {
+      "hand": "y58ykd127ha",
+      "betType": 0,
+      "chance": 15.384615384615385,
+      "cash": false,
+      "multiplier": 6.5
+    },
+    {
+      "hand": "506shanbj1m",
+      "betType": 0,
+      "chance": 100,
+      "cash": false,
+      "multiplier": 1
+    },
+    {
+      "hand": "506shanbj1m",
+      "betType": 1,
+      "chance": 7.6923076923076925,
+      "cash": false,
+      "multiplier": 13
+    },
+    {
+      "hand": "y2sfxoi1k9",
+      "betType": 0,
+      "chance": 76.92307692307693,
+      "cash": false,
+      "multiplier": 1.2999999999999998
+    },
+    {
+      "hand": "h8d2576w79o",
+      "betType": 3,
+      "chance": 0,
+      "cash": false,
+      "multiplier": null
+    },
+    {
+      "hand": "j7nn410q67",
+      "betType": 0,
+      "chance": 23.076923076923077,
+      "cash": false,
+      "multiplier": 4.333333333333333
+    },
+    {
+      "hand": "k8pu7ixiujl",
+      "betType": 0,
+      "chance": 92.3076923076923,
+      "cash": false,
+      "multiplier": 1.0833333333333333
+    },
+    {
+      "hand": "k8pu7ixiujl",
+      "betType": 0,
+      "chance": 92.3076923076923,
+      "cash": false,
+      "multiplier": 1.0833333333333333
+    },
+    {
+      "hand": "rbnq56epv3o",
+      "betType": 2,
+      "chance": 50,
+      "cash": false,
+      "multiplier": 2
+    },
+    {
+      "hand": "rbnq56epv3o",
+      "betType": 0,
+      "chance": 76.92307692307693,
+      "cash": false,
+      "multiplier": 1.2999999999999998
+    },
+    {
+      "hand": "kivzgnlgyn",
+      "betType": 1,
+      "chance": 92.3076923076923,
+      "cash": false,
+      "multiplier": 1.0833333333333333
+    },
+    {
+      "hand": "kivzgnlgyn",
+      "betType": 1,
+      "chance": 92.3076923076923,
+      "cash": false,
+      "multiplier": 1.0833333333333333
+    },
+    {
+      "hand": "caxb1knqydp",
+      "betType": 5,
+      "chance": 0,
+      "cash": true,
+      "multiplier": null
+    },
+    {
+      "hand": "k0d4ssvi7e8",
+      "betType": 1,
+      "chance": 100,
+      "cash": false,
+      "multiplier": 1
+    },
+    {
+      "hand": "px5uggoh4l",
+      "betType": 0,
+      "chance": 76.92307692307693,
+      "cash": false,
+      "multiplier": 1.2999999999999998
+    },
+    {
+      "hand": "vmjt167gog",
+      "betType": 1,
+      "chance": 61.53846153846154,
+      "cash": false,
+      "multiplier": 1.625
+    },
+    {
+      "hand": "nq0m7k536qf",
+      "betType": 3,
+      "chance": 0,
+      "cash": false,
+      "multiplier": null
+    },
+    {
+      "hand": "vbyvjpi4ht",
+      "betType": 0,
+      "chance": 84.61538461538461,
+      "cash": false,
+      "multiplier": 1.1818181818181819
+    },
+    {
+      "hand": "a6olf5es838",
+      "betType": 0,
+      "chance": 92.3076923076923,
+      "cash": false,
+      "multiplier": 1.0833333333333333
+    },
+    {
+      "hand": "2c43u97dm44",
+      "betType": 1,
+      "chance": 46.15384615384615,
+      "cash": false,
+      "multiplier": 2.1666666666666665
+    },
+    {
+      "hand": "snb075pdpjc",
+      "betType": 5,
+      "chance": 0,
+      "cash": true,
+      "multiplier": null
+    },
+    {
+      "hand": "epql2gfeju",
+      "betType": 0,
+      "chance": 61.53846153846154,
+      "cash": false,
+      "multiplier": 1.625
+    },
+    {
+      "hand": "o1jdevi609n",
+      "betType": 1,
+      "chance": 84.61538461538461,
+      "cash": false,
+      "multiplier": 1.1818181818181819
+    },
+    {
+      "hand": "1pm3w500uqq",
+      "betType": 0,
+      "chance": 7.6923076923076925,
+      "cash": false,
+      "multiplier": 13
+    },
+    {
+      "hand": "byubf5ugba",
+      "betType": 1,
+      "chance": 69.23076923076923,
+      "cash": false,
+      "multiplier": 1.4444444444444444
+    },
+    {
+      "hand": "xuj7owr8g3",
+      "betType": 0,
+      "chance": 7.6923076923076925,
+      "cash": false,
+      "multiplier": 13
+    },
+    {
+      "hand": "xmc05g92kh",
+      "betType": 0,
+      "chance": 100,
+      "cash": false,
+      "multiplier": 1
+    },
+    {
+      "hand": "xmc05g92kh",
+      "betType": 0,
+      "chance": 100,
+      "cash": false,
+      "multiplier": 1
+    },
+    {
+      "hand": "th1tiy1ts7k",
+      "betType": 1,
+      "chance": 92.3076923076923,
+      "cash": false,
+      "multiplier": 1.0833333333333333
+    },
+    {
+      "hand": "th1tiy1ts7k",
+      "betType": 1,
+      "chance": 92.3076923076923,
+      "cash": false,
+      "multiplier": 1.0833333333333333
+    },
+    {
+      "hand": "wcrc563aw6e",
+      "betType": 0,
+      "chance": 84.61538461538461,
+      "cash": false,
+      "multiplier": 1.1818181818181819
+    },
+    {
+      "hand": "yesz1on72d",
+      "betType": 0,
+      "chance": 100,
+      "cash": false,
+      "multiplier": 1
+    },
+    {
+      "hand": "iymzz46bep",
+      "betType": 1,
+      "chance": 61.53846153846154,
+      "cash": false,
+      "multiplier": 1.625
+    },
+    {
+      "hand": "n61qa9n2ub9",
+      "betType": 0,
+      "chance": 76.92307692307693,
+      "cash": false,
+      "multiplier": 1.2999999999999998
+    },
+    {
+      "hand": "wisrs1b4x1j",
+      "betType": 0,
+      "chance": 7.6923076923076925,
+      "cash": false,
+      "multiplier": 13
+    },
+    {
+      "hand": "xkwnwlo88zb",
+      "betType": 0,
+      "chance": 92.3076923076923,
+      "cash": false,
+      "multiplier": 1.0833333333333333
+    },
+    {
+      "hand": "xkwnwlo88zb",
+      "betType": 0,
+      "chance": 92.3076923076923,
+      "cash": false,
+      "multiplier": 1.0833333333333333
+    },
+    {
+      "hand": "7vma957veru",
+      "betType": 1,
+      "chance": 69.23076923076923,
+      "cash": false,
+      "multiplier": 1.4444444444444444
+    },
+    {
+      "hand": "7vma957veru",
+      "betType": 1,
+      "chance": 69.23076923076923,
+      "cash": false,
+      "multiplier": 1.4444444444444444
+    },
+    {
+      "hand": "fguj3aqry3",
+      "betType": 0,
+      "chance": 100,
+      "cash": false,
+      "multiplier": 1
+    },
+    {
+      "hand": "fguj3aqry3",
+      "betType": 0,
+      "chance": 100,
+      "cash": false,
+      "multiplier": 1
+    },
+    {
+      "hand": "bmkpra2kwh",
+      "betType": 0,
+      "chance": 69.23076923076923,
+      "cash": false,
+      "multiplier": 1.4444444444444444
+    },
+    {
+      "hand": "rbrtnfnjy4f",
+      "betType": 5,
+      "chance": 0,
+      "cash": true,
+      "multiplier": null
+    },
+    {
+      "hand": "jjfy8pdn4d",
+      "betType": 1,
+      "chance": 53.84615384615385,
+      "cash": false,
+      "multiplier": 1.8571428571428572
+    },
+    {
+      "hand": "aglcov84uug",
+      "betType": 1,
+      "chance": 61.53846153846154,
+      "cash": false,
+      "multiplier": 1.625
+    },
+    {
+      "hand": "aglcov84uug",
+      "betType": 1,
+      "chance": 61.53846153846154,
+      "cash": false,
+      "multiplier": 1.625
+    },
+    {
+      "hand": "dq5af2jhh2",
+      "betType": 0,
+      "chance": 69.23076923076923,
+      "cash": false,
+      "multiplier": 1.4444444444444444
+    },
+    {
+      "hand": "g1gzsb18qxl",
+      "betType": 0,
+      "chance": 69.23076923076923,
+      "cash": false,
+      "multiplier": 1.4444444444444444
+    },
+    {
+      "hand": "lfqblwl8bb",
+      "betType": 1,
+      "chance": 61.53846153846154,
+      "cash": false,
+      "multiplier": 1.625
+    },
+    {
+      "hand": "ath7jubahh4",
+      "betType": 0,
+      "chance": 61.53846153846154,
+      "cash": false,
+      "multiplier": 1.625
+    },
+    {
+      "hand": "t6y18tphzt",
+      "betType": 0,
+      "chance": 100,
+      "cash": false,
+      "multiplier": 1
+    },
+    {
+      "hand": "rhk0j4gout",
+      "betType": 0,
+      "chance": 84.61538461538461,
+      "cash": false,
+      "multiplier": 1.1818181818181819
+    },
+    {
+      "hand": "tbcrxqpp25j",
+      "betType": 1,
+      "chance": 46.15384615384615,
+      "cash": false,
+      "multiplier": 2.1666666666666665
+    },
+    {
+      "hand": "rt5pe1cnlc",
+      "betType": 0,
+      "chance": 84.61538461538461,
+      "cash": false,
+      "multiplier": 1.1818181818181819
+    },
+    {
+      "hand": "eyevnxhtjt9",
+      "betType": 0,
+      "chance": 15.384615384615385,
+      "cash": false,
+      "multiplier": 6.5
+    },
+    {
+      "hand": "bzctc04bkqr",
+      "betType": 0,
+      "chance": 84.61538461538461,
+      "cash": false,
+      "multiplier": 1.1818181818181819
+    },
+    {
+      "hand": "0wm19hu9zo6e",
+      "betType": 0,
+      "chance": 84.61538461538461,
+      "cash": false,
+      "multiplier": 1.1818181818181819
+    },
+    {
+      "hand": "0wm19hu9zo6e",
+      "betType": 0,
+      "chance": 84.61538461538461,
+      "cash": false,
+      "multiplier": 1.1818181818181819
+    },
+    {
+      "hand": "gplz7ubif1l",
+      "betType": 1,
+      "chance": 61.53846153846154,
+      "cash": false,
+      "multiplier": 1.625
+    },
+    {
+      "hand": "gplz7ubif1l",
+      "betType": 1,
+      "chance": 61.53846153846154,
+      "cash": false,
+      "multiplier": 1.625
+    },
+    {
+      "hand": "ss50jwyht1l",
+      "betType": 5,
+      "chance": 0,
+      "cash": true,
+      "multiplier": null
+    },
+    {
+      "hand": "nt75zn5tgdg",
+      "betType": 5,
+      "chance": 0,
+      "cash": true,
+      "multiplier": null
+    },
+    {
+      "hand": "erlmn91r97f",
+      "betType": 0,
+      "chance": 92.3076923076923,
+      "cash": false,
+      "multiplier": 1.0833333333333333
+    },
+    {
+      "hand": "jtk8s38r5n",
+      "betType": 1,
+      "chance": 69.23076923076923,
+      "cash": false,
+      "multiplier": 1.4444444444444444
+    },
+    {
+      "hand": "gch51kr9lup",
+      "betType": 0,
+      "chance": 84.61538461538461,
+      "cash": false,
+      "multiplier": 1.1818181818181819
+    },
+    {
+      "hand": "7i1edg5m1q5",
+      "betType": 5,
+      "chance": 0,
+      "cash": true,
+      "multiplier": null
+    },
+    {
+      "hand": "kajhtm6l0m",
+      "betType": 1,
+      "chance": 61.53846153846154,
+      "cash": false,
+      "multiplier": 1.625
+    },
+    {
+      "hand": "a84huve1eb",
+      "betType": 0,
+      "chance": 84.61538461538461,
+      "cash": false,
+      "multiplier": 1.1818181818181819
+    },
+    {
+      "hand": "doc09hhtnyw",
+      "betType": 0,
+      "chance": 7.6923076923076925,
+      "cash": false,
+      "multiplier": 13
+    },
+    {
+      "hand": "66kua5ddt2i",
+      "betType": 0,
+      "chance": 61.53846153846154,
+      "cash": false,
+      "multiplier": 1.625
+    },
+    {
+      "hand": "gykhac7w5r",
+      "betType": 1,
+      "chance": 46.15384615384615,
+      "cash": false,
+      "multiplier": 2.1666666666666665
+    },
+    {
+      "hand": "x2o4dj9j0b",
+      "betType": 0,
+      "chance": 30.76923076923077,
+      "cash": false,
+      "multiplier": 3.25
+    },
+    {
+      "hand": "run3huret7",
+      "betType": 1,
+      "chance": 92.3076923076923,
+      "cash": false,
+      "multiplier": 1.0833333333333333
+    },
+    {
+      "hand": "m1lsrhb68l",
+      "betType": 0,
+      "chance": 76.92307692307693,
+      "cash": false,
+      "multiplier": 1.2999999999999998
+    },
+    {
+      "hand": "inv0d4b9kpf",
+      "betType": 5,
+      "chance": 0,
+      "cash": true,
+      "multiplier": null
+    }
+  ]
 }
