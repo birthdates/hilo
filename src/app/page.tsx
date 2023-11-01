@@ -20,7 +20,7 @@ type Bet = {
   type: number;
 };
 
-const BET_AMOUNTS = [5, 10, 50];
+const BET_AMOUNTS = [1, 3, 5];
 const BET_TYPES = ["HIGH", "LOW", "RED", "BLACK", "SAME", "CASH"];
 
 export default function Home() {
@@ -151,7 +151,12 @@ export default function Home() {
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-center p-24 select-none overflow-hidden">
-      <span className="top-10 flex flex-col text-center absolute text-2xl font-bold">
+      <span
+        className={clsx("flex flex-col text-center absolute text-2xl font-bold", {
+          "top-10": state !== 0,
+          "top-20": state === 0,
+        })}
+      >
         <span>High-Low Haven</span>
         <span className="uppercase">Ace High</span>
       </span>
@@ -260,7 +265,7 @@ export default function Home() {
           </>
         )}
         {state === 0 && (
-          <div className="w-full fixed bottom-5 flex z-10 items-center justify-center">
+          <div className="w-full fixed max-sm:top-5 md:bottom-5 flex z-10 items-center justify-center">
             <span className="text-center text-lg font-bold uppercase mt-2 p-3 rounded-md bg-zinc-800 text-gray-200">
               ${balance.toFixed(2)} Balance
             </span>
@@ -268,16 +273,53 @@ export default function Home() {
         )}
       </div>
       {!detectMob() && (
-        <div className="fixed flex items-center left-[10rem]">
-          <Image
-            alt="QR Code"
-            width={250}
-            height={250}
-            src={
-              "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=http://69.194.47.37:3000/"
-            }
-          ></Image>
-        </div>
+        <>
+          <div className="fixed flex items-center left-[10rem]">
+            <Image
+              alt="QR Code"
+              width={250}
+              height={250}
+              src={
+                "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=http://69.194.47.37:3000/"
+              }
+            ></Image>
+          </div>
+          <div className="fixed flex items-center right-[10rem]">
+            <div className="p-4 bg-zinc-800 rounded-md text-white text-lg w-[40rem] text-clip shadow-2xl">
+              <span className="font-bold text-2xl w-full text-center">How to Play:</span>
+              <span>
+                <pre>
+                  {" "}
+                  <strong className="text-3xl">1.</strong> Place a bet at the start of a
+                  round <br></br>(cannot join mid round).
+                </pre>
+              </span>
+              <span>
+                <pre>
+                  {" "}
+                  <strong className="text-3xl">2.</strong> Wait for first card to be
+                  flipped (first hand)...
+                </pre>
+              </span>
+              <span>
+                <pre>
+                  {" "}
+                  <strong className="text-3xl">3.</strong> Bet on the next card to be
+                  flipped
+                  <br></br>(higher, lower, same, red, black)...
+                </pre>
+              </span>
+              <span>
+                <pre>
+                  {" "}
+                  <strong className="text-3xl">4.</strong> Play all 3 hands in a round or
+                  cash out early by
+                  <br></br>selecting the "CASH" option and waiting.
+                </pre>
+              </span>
+            </div>
+          </div>
+        </>
       )}
       {!isConnected && (
         // Loader that blurs background with spinning circle using tailwind

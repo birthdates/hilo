@@ -6,7 +6,7 @@ import express from "express";
 
 const app = express();
 const server = createServer(app);
-const STARTING_BALANCE = 100;
+const STARTING_BALANCE = 50;
 const HOUSE_EDGE = 0.05; // 5% house edge
 const io = new Server(server, {
   cors: {
@@ -159,7 +159,7 @@ const finishBet = async (token, bet) => {
     return;
   }
   dataCollected.totalProfit += winnings;
-  await updateBalance(token, balance + winnings);
+  await updateBalance(token, balance + bet.bet + winnings);
 };
 
 const finishRound = async () => {
@@ -177,6 +177,7 @@ const updateState = (state) => {
 };
 
 const startHand = async () => {
+  round++;
   handID = generateRandomID();
   dataCollected.handsPlayed++;
   if (dataCollected.handsPlayed > 0) {
@@ -185,10 +186,13 @@ const startHand = async () => {
   }
   updateState(1); // waiting for bets
   flipCard();
-  round++;
-  if (round > 5) {
-    await finishRound();
-    startGame();
+  if (round >= 3) {
+    waitingTime = Date.now() + 5000;
+    io.emit("next_hand", Date.now() + 5000);
+    setTimeout(async () => {
+      await finishRound();
+      startGame();
+    }, 5000);
     return;
   }
   waitingTime = Date.now() + 15000;
@@ -304,6 +308,7 @@ const startGame = () => {
   previousCard = "";
   round = 0;
   shownCards = [];
+  io.emit("cards", shownCards);
   waitingTime = Date.now() + 25000;
   io.emit("start_game", waitingTime);
   setTimeout(startHand, 25000);
