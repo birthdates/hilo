@@ -30,12 +30,13 @@ let betInfo = {};
 
 const fetchBalance = async (token) => {
   const client = await getRedisClient();
-  const balance = parseInt(await client.get(token));
+  const balance = parseFloat(await client.get(token));
   return balance;
 };
 
 const generateRandomID = () => {
-  return Math.random().toString(36).substr(2);
+  // 32 character id
+  return Math.random().toString(36).substr(2, 32);
 };
 
 const updateBalance = async (token, balance) => {
@@ -63,8 +64,8 @@ io.use(async (socket, next) => {
   const client = await getRedisClient();
 
   if (!token || !(await client.exists(token))) {
-    // Generate random token and store it in Redis (token -> balance)
-    token = Math.random().toString(36).substr(2);
+    // Generate random 32 character token and store it in Redis (token -> balance)
+    token = generateRandomID();
     client.set(token, STARTING_BALANCE);
     socket.newConnection = true;
   }
@@ -276,8 +277,8 @@ const checkWinnings = (card, suit) => {
     if (failed || cash) {
       console.log("Loss:", previousCard, card, suit, betInfo[key]);
       delete betInfo[key];
-      if (socket) socket.emit("bet", null, failed);
-      return;
+      if (socket) socket.emit("bet", null, failed && !cash);
+      continue;
     }
 
     if (multiplier - HOUSE_EDGE > 1) {

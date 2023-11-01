@@ -284,27 +284,29 @@ export default function Home() {
               }
             ></Image>
           </div>
-          <div className="fixed flex items-center right-[10rem]">
-            <div className="p-4 bg-zinc-800 rounded-md text-white text-lg w-[40rem] text-clip shadow-2xl">
-              <span className="font-bold text-2xl w-full text-center">How to Play:</span>
+          <div className="fixed flex items-center right-[0rem]">
+            <div className="p-4 bg-zinc-800 rounded-md text-white w-[30rem] text-sm text-clip shadow-2xl">
+              <span className="font-bold text-xl w-full text-center">How to Play:</span>
               <span>
                 <pre>
                   {" "}
-                  <strong className="text-3xl">1.</strong> Place a bet at the start of a
-                  round <br></br>(cannot join mid round).
+                  <strong className="text-xl">1.</strong> Place a bet by tapping on the
+                  chips and the <span className="text-xl">✓</span>
+                  <br></br> button to submit your bet<br></br> at the start of a round{" "}
+                  <br></br>(cannot join mid round).
                 </pre>
               </span>
               <span>
                 <pre>
                   {" "}
-                  <strong className="text-3xl">2.</strong> Wait for first card to be
+                  <strong className="text-xl">2.</strong> Wait for first card to be
                   flipped (first hand)...
                 </pre>
               </span>
               <span>
                 <pre>
                   {" "}
-                  <strong className="text-3xl">3.</strong> Bet on the next card to be
+                  <strong className="text-xl">3.</strong> Bet on the next card to be
                   flipped
                   <br></br>(higher, lower, same, red, black)...
                 </pre>
@@ -312,9 +314,9 @@ export default function Home() {
               <span>
                 <pre>
                   {" "}
-                  <strong className="text-3xl">4.</strong> Play all 3 hands in a round or
+                  <strong className="text-xl">4.</strong> Play all 3 hands in a round or
                   cash out early by
-                  <br></br>selecting the "CASH" option and waiting.
+                  <br></br>selecting the CASH option and waiting.
                 </pre>
               </span>
             </div>
