@@ -18,7 +18,7 @@ const BET_TYPES = {
 const csv = data.bets
   .filter((x) => !x.cash && x.multiplier && x.chance)
   .map(({ betType, multiplier, chance, hand }) => {
-    return `${BET_TYPES[betType]},${multiplier ?? 1},${chance ?? 0},${getCard(
+    return `${BET_TYPES[betType]},${multiplier},${chance},${getCard(
       data.hands[hand].card
     )}`;
   });

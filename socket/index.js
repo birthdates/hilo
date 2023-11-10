@@ -275,7 +275,6 @@ const checkWinnings = (card, suit) => {
     const socket = TOKEN_TO_SOCKET[key];
 
     if (failed || cash) {
-      console.log("Loss:", previousCard, card, suit, betInfo[key]);
       delete betInfo[key];
       if (socket) socket.emit("bet", null, failed && !cash);
       continue;
@@ -284,7 +283,6 @@ const checkWinnings = (card, suit) => {
     if (multiplier - HOUSE_EDGE > 1) {
       multiplier -= HOUSE_EDGE;
     }
-    console.log("Win", previousCard, card, suit, betInfo[key], multiplier);
 
     if (multiplier > 1) {
       betInfo[key].multiplier = multiplier;
