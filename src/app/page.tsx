@@ -280,7 +280,7 @@ export default function Home() {
               width={250}
               height={250}
               src={
-                "https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=http://69.194.47.37:3000/"
+                `https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=${URL}`
               }
             ></Image>
           </div>
