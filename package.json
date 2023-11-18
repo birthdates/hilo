@@ -7,6 +7,8 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "socket": "cd socket & node index.js",
+    "compute": "cd socket & node data.js",
     "lint": "next lint"
   },
   "dependencies": {
